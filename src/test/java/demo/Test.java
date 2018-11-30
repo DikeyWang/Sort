@@ -20,9 +20,11 @@ public class Test {
     }
 
     @org.junit.Test
-    public void quickSort(){
-        quickSort1(num,0,num.length-1);
-        System.out.println(Arrays.toString(num));
+    public void sort(){
+        /*quickSort1(num,0,num.length-1);
+        System.out.println(Arrays.toString(num));*/
+        System.out.println(Arrays.toString(insertSort(num)));
+
     }
 
     public void quickSort1(int[] arr,int start,int end){
@@ -46,4 +48,23 @@ public class Test {
         }
     }
 
+    public int[] insertSort(int[] arr){
+        int tmp = -1;
+        for (int i = 1;i < arr.length; i++){
+            tmp = arr[i];
+            int index = i;
+            for (int j = i-1;j >= 0;j--){
+                if(tmp>arr[j]){
+                    //若成立，将数据有意义为
+                    arr[j+1] = arr[j];
+                    index = j;
+                }else {
+                    break;
+                }
+            }
+            //占位
+            arr[index] = tmp;
+        }
+        return arr;
+    }
 }
